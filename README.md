@@ -6,16 +6,16 @@ bajty MAC adresy), které se převedou na poslední dva oktety IP adresy.
 
 ## Instalace
 
+Vyžaduje [uv](https://docs.astral.sh/uv/):
+
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
 
 ## Spuštění
 
 ```bash
-python app.py
+uv run python app.py
 ```
 
 Aplikace poběží na `http://<ip-raspberry-pi>:5000`.
@@ -41,7 +41,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/home/pi/Ping-tester
-ExecStart=/home/pi/Ping-tester/venv/bin/python app.py
+ExecStart=/home/pi/.local/bin/uv run python app.py
 Restart=on-failure
 User=pi
 
